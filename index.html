@@ -1,36 +1,36 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
-&lt;title&gt;Circle Area Calculator&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Circle Area Calculator&lt;/h1&gt;
-&lt;label for=&quot;radius&quot;&gt;Enter radius:&lt;/label&gt;
-&lt;input id=&quot;radius&quot; type=&quot;number&quot; min=&quot;0&quot; step=&quot;any&quot; value=&quot;5&quot;&gt;
-&lt;button id=&quot;calculate&quot; onclick=&quot;calculate()&quot; disabled&gt;Loading C++...&lt;/button&gt;
-&lt;p id=&quot;result&quot;&gt;Result will appear here.&lt;/p&gt;
-&lt;script&gt;
+<!DOCTYPE html>
+<html lang="en">
+<head>;
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1"
+     <title>Circle Area Calculator</title>
+</head>
+<body>
+<h1>Circle Area Calculator</h1>h1>
+<label for="radius">Enter radius:</label>
+<input id="radius" type="number" min="0" step="any" value="5">
+<button id="calculate" onclick="calculate()" disabled>Loading C++...</button>
+<p id="result">Result will appear here.</p>
+<script>
 var Module = {
 onRuntimeInitialized: function () {
-const button = document.getElementById(&quot;calculate&quot;);
+const button = document.getElementById("calculate");
 button.disabled = false;
-button.textContent = &quot;Calculate Area&quot;;
+button.textContent = "Calculate Area";
 }
 };
 function calculate() {
-const raw = document.getElementById(&quot;radius&quot;).value;
+const raw = document.getElementById("radius").value;
 const radius = Number(raw);
-const result = document.getElementById(&quot;result&quot;);
-if (raw.trim() === &quot;&quot; || !Number.isFinite(radius) || radius &lt; 0) {
-result.textContent = &quot;Please enter a valid non-negative radius.&quot;;
+const result = document.getElementById("result");
+if (raw.trim() === "" || !Number.isFinite(radius) || radius < 0) {
+result.textContent = "Please enter a valid non-negative radius.";
 return;
 }
-const area = Module.ccall(&quot;calculateArea&quot;, &quot;number&quot;, [&quot;number&quot;], [radius]);
-result.textContent = &quot;Area = &quot; + area.toFixed(2) + &quot; square units&quot;;
+const area = Module.ccall("calculateArea", "number", ["number"], [radius]);
+result.textContent = "Area = " + area.toFixed(2) + " square units";
 }
-&lt;/script&gt;
-&lt;script src=&quot;circle.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+</script>
+<script src="circle.js"></script>
+</body>
+</html>
