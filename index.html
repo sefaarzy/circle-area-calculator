@@ -1,0 +1,36 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Circle Area Calculator&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Circle Area Calculator&lt;/h1&gt;
+&lt;label for=&quot;radius&quot;&gt;Enter radius:&lt;/label&gt;
+&lt;input id=&quot;radius&quot; type=&quot;number&quot; min=&quot;0&quot; step=&quot;any&quot; value=&quot;5&quot;&gt;
+&lt;button id=&quot;calculate&quot; onclick=&quot;calculate()&quot; disabled&gt;Loading C++...&lt;/button&gt;
+&lt;p id=&quot;result&quot;&gt;Result will appear here.&lt;/p&gt;
+&lt;script&gt;
+var Module = {
+onRuntimeInitialized: function () {
+const button = document.getElementById(&quot;calculate&quot;);
+button.disabled = false;
+button.textContent = &quot;Calculate Area&quot;;
+}
+};
+function calculate() {
+const raw = document.getElementById(&quot;radius&quot;).value;
+const radius = Number(raw);
+const result = document.getElementById(&quot;result&quot;);
+if (raw.trim() === &quot;&quot; || !Number.isFinite(radius) || radius &lt; 0) {
+result.textContent = &quot;Please enter a valid non-negative radius.&quot;;
+return;
+}
+const area = Module.ccall(&quot;calculateArea&quot;, &quot;number&quot;, [&quot;number&quot;], [radius]);
+result.textContent = &quot;Area = &quot; + area.toFixed(2) + &quot; square units&quot;;
+}
+&lt;/script&gt;
+&lt;script src=&quot;circle.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
